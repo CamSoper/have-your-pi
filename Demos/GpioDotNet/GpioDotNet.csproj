@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <RootNamespace>have_your_pi</RootNamespace>
+    <RootNamespace>CamTheGeek.GpioDotNet</RootNamespace>
   </PropertyGroup>
 
 </Project>

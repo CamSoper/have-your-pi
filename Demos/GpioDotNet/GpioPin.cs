@@ -3,7 +3,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CamTheGeek.RpiGpio
+namespace CamTheGeek.GpioDotNet
 {
     enum Direction { In, Out };
     enum PinValue { Low = 0, High = 1 }
