@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Devices.Gpio;
 
 namespace hello_world_reference
 {
@@ -6,7 +9,21 @@ namespace hello_world_reference
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Turning on LED and blinking 5 times...");
+            using (var controller = new GpioController(new RaspberryPiDriver()))
+            {
+                GpioPin led = controller.OpenPin(17, PinMode.Output);
+
+                for (var i = 0; i < 5; ++i)
+                {
+                    led.Write(PinValue.High);
+                    Thread.Sleep(TimeSpan.FromSeconds(1));
+
+                    led.Write(PinValue.Low);
+                    Thread.Sleep(TimeSpan.FromSeconds(1));
+                }
+            }
+            Console.WriteLine("Done!");
         }
     }
 }

@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "blinky-lights", "blinky-lig
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "pushy-button", "pushy-button\pushy-button.csproj", "{F001E743-DB88-46EE-AB40-90538537AD96}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GpioDotNet", "GpioDotNet\GpioDotNet.csproj", "{14876849-D129-40F0-A5FA-3EF95CF67113}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rbg-led", "rbg-led\rbg-led.csproj", "{BB457A78-CBF3-4D91-9DE6-E7808A227891}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +41,10 @@ Global
 		{F001E743-DB88-46EE-AB40-90538537AD96}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F001E743-DB88-46EE-AB40-90538537AD96}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F001E743-DB88-46EE-AB40-90538537AD96}.Release|Any CPU.Build.0 = Release|Any CPU
-		{14876849-D129-40F0-A5FA-3EF95CF67113}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{14876849-D129-40F0-A5FA-3EF95CF67113}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{14876849-D129-40F0-A5FA-3EF95CF67113}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{14876849-D129-40F0-A5FA-3EF95CF67113}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB457A78-CBF3-4D91-9DE6-E7808A227891}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB457A78-CBF3-4D91-9DE6-E7808A227891}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB457A78-CBF3-4D91-9DE6-E7808A227891}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB457A78-CBF3-4D91-9DE6-E7808A227891}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

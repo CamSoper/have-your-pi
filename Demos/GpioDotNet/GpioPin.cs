@@ -5,10 +5,15 @@ using System.Threading.Tasks;
 
 namespace CamTheGeek.GpioDotNet
 {
-    enum Direction { In, Out };
-    enum PinValue { Low = 0, High = 1 }
+    public enum Direction { In, Out };
+    public enum PinValue { Low = 0, High = 1 }
 
-    class GpioPin : IDisposable
+
+    /// <summary>
+    /// This class wraps /sys/class/gpio in the Raspian OS.  It's not currently used for any of these demos,
+    /// but it's functional so I left it in the solution for reference. 
+    /// </summary>
+    public class GpioPin : IDisposable
     {
         Task _pinWatcher;
         CancellationTokenSource _pinWatcherTokenSource;
