@@ -16,12 +16,16 @@ namespace hello_world_reference
 
                 for (var i = 0; i < 5; ++i)
                 {
-                    led.Write(PinValue.High);
-                    Thread.Sleep(TimeSpan.FromSeconds(1));
 
                     led.Write(PinValue.Low);
                     Thread.Sleep(TimeSpan.FromSeconds(1));
+
+                    led.Write(PinValue.High);
+                    Thread.Sleep(TimeSpan.FromSeconds(1));
+
                 }
+                
+                led.Dispose();
             }
             Console.WriteLine("Done!");
         }

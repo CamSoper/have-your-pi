@@ -16,7 +16,7 @@ Cases are optional. If you have access to a 3D printer, you can always make your
 
 There are a ton of accessories available on Amazon, eBay, AliExpress, etc. The accessories I used for my talk are:
 
-* [Freenove Ultimate Starter Kit for Raspberry Pi](http://a.co/d/0Pl9Tdp) - This kit has everything you need to get started except for relays.
+* [Freenove Ultimate Starter Kit for Raspberry Pi](http://a.co/d/0Pl9Tdp) - This is a complete kit and has everything you need to get started (and then some!) except for the two items listed below.
 * [2 Channel 5V Relays](http://a.co/d/j5lcbjm) - There are a wide variety of brands on this, but they all seem to be about the same. 
 * [Wired Door Sensor Magnetic Switch](http://a.co/d/i3lq5l2)
 
