@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "pushy-button", "pushy-butto
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GpioDotNet", "GpioDotNet\GpioDotNet.csproj", "{6B3E4A95-D6D3-4B57-9FF3-53F7E0DBE29E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "motor", "motor\motor.csproj", "{7772208C-8767-46A3-950C-ECD497227F65}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{6B3E4A95-D6D3-4B57-9FF3-53F7E0DBE29E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B3E4A95-D6D3-4B57-9FF3-53F7E0DBE29E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B3E4A95-D6D3-4B57-9FF3-53F7E0DBE29E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7772208C-8767-46A3-950C-ECD497227F65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7772208C-8767-46A3-950C-ECD497227F65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7772208C-8767-46A3-950C-ECD497227F65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7772208C-8767-46A3-950C-ECD497227F65}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

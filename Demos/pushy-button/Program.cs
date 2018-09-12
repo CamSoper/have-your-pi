@@ -10,9 +10,6 @@ namespace pushy_button
     {
          static void Main(string[] args)
         {
-            Console.WriteLine("PRESS ENTER");
-            Console.ReadLine();
-
             using (var controller = new GpioController(new RaspberryPiDriver()))
             {
                 GpioPin button = controller.OpenPin(20, PinMode.InputPullDown);
