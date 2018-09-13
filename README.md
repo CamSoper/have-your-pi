@@ -4,7 +4,7 @@ Thanks so much for attending my talk! I hope you found it informative and enjoya
 
 ## Get the hardware
 
-The demos for my talk were performed on a [Raspberry Pi 3 B](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/). [Raspberry Pi 3 B+](https://www.raspberrypi.org/products/raspberry-pi-3-model-b-plus/) is an incremental revision that adds PoE (power over ethernet) support, which can be really useful for home automation projects.
+The demos were performed on a [Raspberry Pi 3 B](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/). As far as I'm aware, they should run on any model, but I can't definitively say so. They will certainly run on [Raspberry Pi 3 B+](https://www.raspberrypi.org/products/raspberry-pi-3-model-b-plus/), which is an incremental revision that adds PoE (power over ethernet) support. PoE can be really useful for home automation projects.
 
 The Pi itself will require, at a minimum, power and a micro SD card. The official power supply is 2100 mA, so aim for that or higher. (Any 5V micro USB power supply technically works, but I have seen them complain about low power with a 5V 1500 mA power supply.) There are many different introductory kits that include the power supply, micro SD card, and various accessories by different manufacturers. I can't speak for all of them, but I do have personal experience with CanaKit and have been impressed with their packages.
 
@@ -24,7 +24,7 @@ For purposes of having my circuits pre-assembled for the talk, I also used [extr
 
 ## Get the bits
 
-You'll need an [operating system](https://www.raspberrypi.org/downloads/). I use Raspbian Lite. [Windows IOT Core will also run .NET Core](https://github.com/dotnet/core/blob/master/samples/RaspberryPiInstructions.md) if you'd prefer a Windows OS.
+You'll need an [operating system](https://www.raspberrypi.org/downloads/). I use Raspbian Lite. 
 
 ## Build the demos
 
@@ -79,3 +79,7 @@ You can get started with it today by grabbing [the NuGet package hosted on the c
 ```
 
 On Linux and Mac developer machines, you may need to use the *source* switch with `dotnet restore` to point to the above feed. 
+
+## Windows on Raspberry Pi
+
+[Windows IOT Core will also run .NET Core](https://github.com/dotnet/core/blob/master/samples/RaspberryPiInstructions.md) if you'd prefer a Windows OS, ,but the deployment model is a little different. You'll also find that `CamTheGeek.GpioDotNet` doesn't work, because it wraps a feature of the Raspian OS.  If you're looking to do GPIO on Windows IoT Core, I *think* [System.Devices.Gpio](https://dotnet.myget.org/feed/dotnet-corefxlab/package/nuget/System.Devices.Gpio) should work, but you might also consider [Bifrost.Devices.Gpio](https://www.nuget.org/packages/Bifrost.Devices.Gpio/).  If .NET Core is not a requirement, you can write your app using UWP and [Windows.Devices.Gpio](https://docs.microsoft.com/uwp/api/Windows.Devices.Gpio).
