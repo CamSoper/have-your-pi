@@ -10,8 +10,7 @@ namespace CamTheGeek.GpioDotNet
 
 
     /// <summary>
-    /// This class wraps /sys/class/gpio in the Raspian OS.  It's not currently used for any of these demos,
-    /// but it's functional so I left it in the solution for reference. 
+    /// This class wraps /sys/class/gpio in the Raspian OS.
     /// </summary>
     public class GpioPin : IDisposable
     {
@@ -27,22 +26,35 @@ namespace CamTheGeek.GpioDotNet
                 File.WriteAllText($"/sys/class/gpio/gpio{Number}/value", ((int)value).ToString());
              }    
         }
-       
-        public GpioPin(int PinNumber, Direction PinDirection)
-        {
-            this.Number = PinNumber;
-            this.Direction = PinDirection;
 
-            // Open the pin
-            File.WriteAllText("/sys/class/gpio/export", Number.ToString());
+         public GpioPin(int pinNumber, Direction pinDirection, PinValue pinValue = PinValue.Low)
+        {
+            this.Number = pinNumber;
+            this.Direction = pinDirection;
+
+            try
+            {
+                // Open the pin
+                File.WriteAllText("/sys/class/gpio/export", Number.ToString());
+            }
+            catch(System.IO.IOException ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Pin already open? Stack trace: \r\n {ex}");
+            }
+
             // Allow a few milliseconds so the pin gets opened before we set the direction
             Thread.Sleep(100);
+            
             // Set pin direction
             File.WriteAllText($"/sys/class/gpio/gpio{Number}/direction", Direction.ToString().ToLower());
+            
+            //Set default pin value
+            this.Value = pinValue;
+
 
             // If it's an OUT pin, spin up a watcher task to raise 
             // events when the value changes...
-            if(this.Direction == Direction.Out)
+            if(this.Direction == Direction.In)
             {
                 LaunchPinWatcher();
             }

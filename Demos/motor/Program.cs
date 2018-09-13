@@ -4,38 +4,52 @@ namespace motor
 {
     class Program
     {
-        const string _validArgs = "on,off,fwd,rev";
+        const string _validArgs = "on,off,fwd,rev,exit";
+        const string _help = "Valid commands: on|off|fwd|rev|exit";
         static void Main(string[] args)
         {
-            if (args.Length != 1 || !_validArgs.Contains(args[0]))
-            {
-                Console.WriteLine("Usage: motor on|off|fwd|rev");
-                return;
-            }
+            Console.WriteLine();
+            
             using (var motor = new Motor(21, 27))
             {
-                switch (args[0].ToLower())
+                Console.WriteLine(_help);
+
+                while (true)
                 {
-                    case "on":
-                        Console.WriteLine("Turning motor ON.");
-                        motor.On();
-                        break;
+                    var command = Console.ReadLine();
+                    switch (command)
+                    {
+                        case "on":
+                            Console.WriteLine("Turning motor ON.");
+                            motor.On();
+                            break;
 
-                    case "off":
-                        Console.WriteLine("Turning motor OFF.");
-                        motor.Off();
-                        break;
+                        case "off":
+                            Console.WriteLine("Turning motor OFF.");
+                            motor.Off();
+                            break;
 
-                    case "rev":
-                        Console.WriteLine("Reversing motor polarity.");
-                        motor.Reverse();
-                        break;
+                        case "rev":
+                            Console.WriteLine("Reversing motor polarity.");
+                            motor.Reverse();
+                            break;
 
-                    case "fwd":
-                        Console.WriteLine("Resetting motor polarity.");
-                        motor.Forward();
-                        break;
+                        case "fwd":
+                            Console.WriteLine("Resetting motor polarity.");
+                            motor.Forward();
+                            break;
+
+                        case "exit":
+                            Console.WriteLine("Bye!");
+                            return;
+                            
+                        default:
+                            Console.WriteLine(_help);
+                            break;
+
+                    }
                 }
+                
             }
         }
     }

@@ -1,41 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Devices.Gpio;
-using System.Text;
+﻿using CamTheGeek.GpioDotNet;
+using System;
 
 namespace motor
 {
     class Motor : IDisposable
     {
-        GpioController _controller;
-        GpioPin _powerPin;
-        GpioPin _polarityPin;
+        private GpioPin _powerPin;
+        private GpioPin _polarityPin;
         
         public Motor(int powerPinNumber, int polarityPinNumber)
         {
-            _controller = new GpioController(new RaspberryPiDriver());
-            _powerPin = _controller.OpenPin(powerPinNumber, PinMode.Output);
-            _polarityPin = _controller.OpenPin(polarityPinNumber, PinMode.Output);
+            _powerPin = new GpioPin(powerPinNumber, Direction.Out, PinValue.High);
+            _polarityPin = new GpioPin(polarityPinNumber, Direction.Out, PinValue.High);
+
+            this.Off();
+            this.Forward();
         }
 
         public void On()
         {
             // Since the power is connected to the "Normally Open" terminal
             // (so the motor's default state is off), PinValue.Low is "On"
-            _powerPin.Write(PinValue.Low);
+            _powerPin.Value = PinValue.Low;
         }
 
         public void Off()
         {
-            _powerPin.Write(PinValue.High);
+            _powerPin.Value = PinValue.High;
         }
         public void Forward()
         {
-            _polarityPin.Write(PinValue.High);
+            _polarityPin.Value = PinValue.High;
         }
         public void Reverse()
         {
-            _polarityPin.Write(PinValue.Low);
+            _polarityPin.Value = PinValue.Low;
         }
 
 
@@ -49,7 +48,8 @@ namespace motor
                 if (disposing)
                 {
                     // TODO: dispose managed state (managed objects).
-                    _controller.Dispose();
+                    _powerPin.Dispose();
+                    _polarityPin.Dispose();
                 }
 
                 // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.

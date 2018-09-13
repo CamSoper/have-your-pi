@@ -29,21 +29,15 @@ You'll need an [operating system](https://www.raspberrypi.org/downloads/). I use
 ## Build the demos
 
 ### Circuits
-You can refer to the slides to see how the circuits were assembled.
+You can refer to the slides to see how the circuits were assembled. For your convenience, I've also included the Fritzing diagrams in the *Schematics* folder.
 
 ### Dependencies
-The demos depend on System.Devices.Gpio, which comes from a NuGet package hosted on the corefxlabs MyGet feed. To add the feed to your package sources on Windows, open `%appdata%\NuGet\NuGet.Config` and add the following element to **packageSources**:
-
-```xml
-<add key="dotnet corefxlab MyGet" value="https://dotnet.myget.org/F/dotnet-corefxlab/api/v3/index.json" />
-```
-
-On Linux and Mac developer machines, you may need to use the *source* switch with `dotnet restore` to point to the above feed. 
+All the dependencies should restore from NuGet.
 
 ### Visual Studio
 Open `.\Demos\have-your-pi.sln` in Visual Studio and build.
 
-You will need to run `dotnet publish -r linux-arm` at the command line to build the Self-Contained Deployment (SCD). This can be automated as a post-build task in Visual Studio if you wish.
+To build the Self-Contained Deployment (SCD), including all the dependencies, you can to run `dotnet publish -r linux-arm` or you can create a publish profile in Visual Studio and manually change the `RuntimeIdentifier` element.
 
 ### Command Line
 From `.\Demos`, run:
@@ -73,3 +67,15 @@ Visual Studio can connect directly to a SCD via SSH. To do so, click **Debug > A
 ### Visual Studio Code
 
 Debugging from Visual Studio Code depends on vsdbg on the target machine and requires some configuration in VSCode. [See this walkthrough for details](https://github.com/OmniSharp/omnisharp-vscode/wiki/Remote-Debugging-On-Linux-Arm).
+
+## System.Devices.Gpio
+
+There is official support for GPIO coming in .NET Core 3.0. [It's currently in development](https://github.com/dotnet/corefxlab/tree/master/src/System.Devices.Gpio).
+
+You can get started with it today by grabbing [the NuGet package hosted on the corefxlabs MyGet feed](https://dotnet.myget.org/feed/dotnet-corefxlab/package/nuget/System.Devices.Gpio). To add the feed to your package sources on Windows, open `%appdata%\NuGet\NuGet.Config` and add the following element to **packageSources**:
+
+```xml
+<add key="dotnet corefxlab MyGet" value="https://dotnet.myget.org/F/dotnet-corefxlab/api/v3/index.json" />
+```
+
+On Linux and Mac developer machines, you may need to use the *source* switch with `dotnet restore` to point to the above feed. 

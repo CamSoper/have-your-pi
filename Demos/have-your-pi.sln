@@ -9,13 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cortana-lights", "cortana-l
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "hello-world-reference", "hello-world-reference\hello-world-reference.csproj", "{556FF53F-3CDA-4822-A523-C55F61D0E0EE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "blinky-lights", "blinky-lights\blinky-lights.csproj", "{52BBD476-67E4-4183-8074-17053F86D253}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "pushy-button", "pushy-button\pushy-button.csproj", "{F001E743-DB88-46EE-AB40-90538537AD96}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GpioDotNet", "GpioDotNet\GpioDotNet.csproj", "{6B3E4A95-D6D3-4B57-9FF3-53F7E0DBE29E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "motor", "motor\motor.csproj", "{7772208C-8767-46A3-950C-ECD497227F65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "motor", "motor\motor.csproj", "{7772208C-8767-46A3-950C-ECD497227F65}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "door-watcher", "door-watcher\door-watcher.csproj", "{19EBD187-01CE-47BC-95DA-AC7A5752F4FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,6 @@ Global
 		{556FF53F-3CDA-4822-A523-C55F61D0E0EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{556FF53F-3CDA-4822-A523-C55F61D0E0EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{556FF53F-3CDA-4822-A523-C55F61D0E0EE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{52BBD476-67E4-4183-8074-17053F86D253}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{52BBD476-67E4-4183-8074-17053F86D253}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{52BBD476-67E4-4183-8074-17053F86D253}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{52BBD476-67E4-4183-8074-17053F86D253}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F001E743-DB88-46EE-AB40-90538537AD96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F001E743-DB88-46EE-AB40-90538537AD96}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F001E743-DB88-46EE-AB40-90538537AD96}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -51,6 +47,10 @@ Global
 		{7772208C-8767-46A3-950C-ECD497227F65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7772208C-8767-46A3-950C-ECD497227F65}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7772208C-8767-46A3-950C-ECD497227F65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19EBD187-01CE-47BC-95DA-AC7A5752F4FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19EBD187-01CE-47BC-95DA-AC7A5752F4FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19EBD187-01CE-47BC-95DA-AC7A5752F4FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19EBD187-01CE-47BC-95DA-AC7A5752F4FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,7 +1,7 @@
-﻿using System;
+﻿using CamTheGeek.GpioDotNet;
+using System;
 using System.Threading;
-using System.Threading.Tasks;
-using System.Devices.Gpio;
+
 
 namespace hello_world_reference
 {
@@ -10,22 +10,16 @@ namespace hello_world_reference
         static void Main(string[] args)
         {
             Console.WriteLine("Turning on LED and blinking 5 times...");
-            using (var controller = new GpioController(new RaspberryPiDriver()))
+            using (var led = new GpioPin(17, Direction.Out))
             {
-                GpioPin led = controller.OpenPin(17, PinMode.Output);
-
                 for (var i = 0; i < 5; ++i)
                 {
-
-                    led.Write(PinValue.Low);
+                    led.Value = PinValue.High;
                     Thread.Sleep(TimeSpan.FromSeconds(1));
 
-                    led.Write(PinValue.High);
+                    led.Value = PinValue.Low;
                     Thread.Sleep(TimeSpan.FromSeconds(1));
-
                 }
-                
-                led.Dispose();
             }
             Console.WriteLine("Done!");
         }

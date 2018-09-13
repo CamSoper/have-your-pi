@@ -1,8 +1,5 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Devices.Gpio;
-using System.Diagnostics;
+﻿using CamTheGeek.GpioDotNet;
+using System;
 
 namespace pushy_button
 {
@@ -10,38 +7,23 @@ namespace pushy_button
     {
          static void Main(string[] args)
         {
-            using (var controller = new GpioController(new RaspberryPiDriver()))
+            using (var button = new GpioPin(20, Direction.In))
             {
-                GpioPin button = controller.OpenPin(20, PinMode.InputPullDown);
-
-                button.NotifyEvents = PinEvent.SyncFallingRisingEdge;
-                button.ValueChanged += ButtonPressed;
-                button.EnableRaisingEvents = true;
-
-                Stopwatch watch = Stopwatch.StartNew();
-
-                while (watch.Elapsed.TotalSeconds < 15)
-                {
-                    Thread.Sleep(1 * 100);
-                }
+                button.High += Button_High;
+                button.Low += Button_Low;
+                Console.WriteLine("Waiting for button. Press ENTER to exit.");
+                Console.ReadLine();
             }
-            Console.WriteLine("Done!");
         }
 
-        static void ButtonPressed(object sender, PinValueChangedEventArgs e)
+        private static void Button_Low(object sender, EventArgs e)
         {
-            GpioPin button = sender as GpioPin;
-            var pinValue = button.Read();
-            if(pinValue == PinValue.Low)
-            {
-                Console.WriteLine("button released");
-            }
-            else
-            {
-                Console.WriteLine("button pressed");
-            }
+            Console.WriteLine("Button released!");
+        }
 
-
+        private static void Button_High(object sender, EventArgs e)
+        {
+            Console.WriteLine("Button pressed!");
         }
     }
 }
