@@ -1,6 +1,6 @@
 # Have Your Pi and Eat It Too: .NET Core on Raspberry Pi
 
-Thanks so much for attending my talk! I hope you found it informative and enjoyable. I've gathered together all the information I could think of to help you get started with .NET Core on Raspberry Pi.
+Thanks so much for attending my talk! I hope you found it informative and enjoyable. I've gathered all the information I could think of to help you get started with .NET Core on Raspberry Pi.
 
 ## Get the hardware
 
