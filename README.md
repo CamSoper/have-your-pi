@@ -29,7 +29,7 @@ You'll need an [operating system](https://www.raspberrypi.org/downloads/). I use
 ## Build the demos
 
 ### Circuits
-You can refer to the slides to see how the circuits were assembled. For your convenience, I've also included the Fritzing diagrams in the *Schematics* folder.
+You can refer to the slides to see how the circuits were assembled. For your convenience, I've also included the [Fritzing](http://fritzing.org/home/) diagrams in the *Schematics* folder.
 
 ### Dependencies
 All the dependencies should restore from NuGet.
@@ -48,7 +48,7 @@ dotnet build
 dotnet publish -r linux-arm
 ```
 
-## Run the demos
+## Deploy and run the demos
 
 Using FileZilla, SCP, or your favorite file transfer tool, move the contents of `.\Demos\<demo>\bin\Debug\netcoreapp2.1\linux-arm\publish` to a location on your Pi. Execute `chmod 755` on the executable to give it run permissions. You can then run the executable by name, including the path. For example, assuming you are in your home (~) location and you've deployed the *pushy-button* demo to `~/pushy-button/`, you'd type:
 
@@ -56,7 +56,7 @@ Using FileZilla, SCP, or your favorite file transfer tool, move the contents of 
 ./pushy-button/pushy-button
 ```
 
-> **IMPORTANT** - On subsequent builds in Visual Studio or at the command line, the `publish` folder will not be updated unless you do it manually. After making changes and compiling, the latest DLL and PDB will be located in `.\Demos\<demo>\bin\Debug\netcoreapp2.1`. Those are all you really need to deploy to test/debug changes.
+> **IMPORTANT** - On subsequent builds in Visual Studio or at the command line, the contents of the `publish` folder will not be updated unless you publish again via Visual Studio or `dotnet publish`. After making changes and compiling, the latest DLL and PDB will be located in `.\Demos\<demo>\bin\Debug\netcoreapp2.1`. Those are all you really need to deploy to test/debug changes.
 
 ## Debugging on the Pi
 
@@ -72,7 +72,7 @@ Debugging from Visual Studio Code depends on vsdbg on the target machine and req
 
 There is official support for GPIO coming in .NET Core 3.0. [It's currently in development](https://github.com/dotnet/corefxlab/tree/master/src/System.Devices.Gpio).
 
-You can get started with it today by grabbing [the NuGet package hosted on the corefxlabs MyGet feed](https://dotnet.myget.org/feed/dotnet-corefxlab/package/nuget/System.Devices.Gpio). To add the feed to your package sources on Windows, open `%appdata%\NuGet\NuGet.Config` and add the following element to **packageSources**:
+You can get started with it today by grabbing [the NuGet package hosted on the corefxlab MyGet feed](https://dotnet.myget.org/feed/dotnet-corefxlab/package/nuget/System.Devices.Gpio). To add the feed to your package sources on Windows, open `%appdata%\NuGet\NuGet.Config` and add the following element to **packageSources**:
 
 ```xml
 <add key="dotnet corefxlab MyGet" value="https://dotnet.myget.org/F/dotnet-corefxlab/api/v3/index.json" />
