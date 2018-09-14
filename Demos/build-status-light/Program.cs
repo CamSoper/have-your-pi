@@ -9,7 +9,7 @@ namespace build_status_light
 {
     /// <summary>
     /// This program connects to a service bus queue and awaits a build success/failure
-    /// message from Azure DevOps.
+    /// message from Azure DevOps. See the slides for an animation.
     /// </summary>
     class Program
     {
