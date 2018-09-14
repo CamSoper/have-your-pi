@@ -23,7 +23,10 @@ namespace CamTheGeek.GpioDotNet
                 return Enum.Parse<PinValue>(File.ReadAllText($"/sys/class/gpio/gpio{Number}/value"));
             } 
             set{
-                File.WriteAllText($"/sys/class/gpio/gpio{Number}/value", ((int)value).ToString());
+                if (this.Direction == Direction.Out)
+                {
+                    File.WriteAllText($"/sys/class/gpio/gpio{Number}/value", ((int)value).ToString());
+                }
              }    
         }
 

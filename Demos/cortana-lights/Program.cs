@@ -6,9 +6,16 @@ using System.Threading.Tasks;
 
 namespace cortana_lights
 {
+    /// <summary>
+    /// This program connects to a service bus queue and awaits a message from an Azure Logic app.
+    /// The user speaks a command to Cortana locally, which is connected to IFTTT.com, which posts the
+    /// the command to an Azure Logic App via a web hook, which sends the message on the queue.
+    /// See the slides for an animation.
+    /// </summary>
     class Program
     {
-       const string _svcBusConn = @"SERVICE BUS CONNECTION STRING HERE";
+        // Please don't hard-code your connection strings. :)
+        const string _svcBusConn = @"SERVICE BUS CONNECTION STRING HERE";
        
         static GpioPin _red;
         static GpioPin _yellow;

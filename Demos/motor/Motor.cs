@@ -3,6 +3,10 @@ using System;
 
 namespace motor
 {
+    /// <summary>
+    /// This class drives a three relays to make a reversible motor control.
+    /// See the schematic for details.
+    /// </summary>
     class Motor : IDisposable
     {
         private GpioPin _powerPin;
@@ -19,8 +23,6 @@ namespace motor
 
         public void On()
         {
-            // Since the power is connected to the "Normally Open" terminal
-            // (so the motor's default state is off), PinValue.Low is "On"
             _powerPin.Value = PinValue.Low;
         }
 

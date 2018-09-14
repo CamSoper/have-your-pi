@@ -5,6 +5,9 @@ using System.Threading;
 
 namespace hello_world_reference
 {
+    /// <summary>
+    /// This is a simple program to turn an LED on/off.
+    /// </summary>
     class Program
     {
         static void Main(string[] args)

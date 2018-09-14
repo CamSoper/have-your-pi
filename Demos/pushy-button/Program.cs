@@ -3,6 +3,9 @@ using System;
 
 namespace pushy_button
 {
+    /// <summary>
+    /// This program handles a button press.
+    /// </summary>
     class Program
     {
          static void Main(string[] args)

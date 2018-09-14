@@ -8,7 +8,6 @@ namespace motor
         const string _help = "Valid commands: on|off|fwd|rev|exit";
         static void Main(string[] args)
         {
-            Console.WriteLine();
             
             using (var motor = new Motor(21, 27))
             {

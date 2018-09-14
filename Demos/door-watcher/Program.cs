@@ -9,7 +9,9 @@ namespace door_watcher
 {
     class Program
     {
-        private static readonly Uri _logicAppUri = new Uri("LOGIC APP URL HERE");
+        // Please don't hard-code your sensitive information like this. :)
+        private static readonly Uri _logicAppUri = new Uri("LOGIC APP URI HERE");
+
         private static HttpClient _client = new HttpClient();
 
         static void Main(string[] args)

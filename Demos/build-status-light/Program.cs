@@ -7,8 +7,13 @@ using System.Threading.Tasks;
 
 namespace build_status_light
 {
+    /// <summary>
+    /// This program connects to a service bus queue and awaits a build success/failure
+    /// message from Azure DevOps.
+    /// </summary>
     class Program
     {
+        // Please don't hard-code your connection strings. :)
         const string _svcBusConn = @"SERVICE BUS CONNECTION STRING HERE";
 
         static GpioPin _red;
@@ -24,6 +29,7 @@ namespace build_status_light
 
             Console.WriteLine("Opening Service Bus Connection...");
             ServiceBusConnectionStringBuilder builder = new ServiceBusConnectionStringBuilder(_svcBusConn);
+            builder.EntityPath = "build";  //Name of the queue
             QueueClient client = new QueueClient(builder, ReceiveMode.ReceiveAndDelete);
             RegisterHandlers(client);
 
