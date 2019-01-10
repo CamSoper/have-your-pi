@@ -70,7 +70,7 @@ Debugging from Visual Studio Code depends on vsdbg on the target machine and req
 
 ## System.Devices.Gpio
 
-There is official support for GPIO coming in .NET Core 3.0. [It's currently in development](https://github.com/dotnet/corefxlab/tree/master/src/System.Devices.Gpio).
+There is official support for GPIO coming in .NET Core 3.0. [It's currently in development](https://github.com/dotnet/iot).
 
 You can get started with it today by grabbing [the NuGet package hosted on the corefxlab MyGet feed](https://dotnet.myget.org/feed/dotnet-corefxlab/package/nuget/System.Devices.Gpio). To add the feed to your package sources on Windows, open `%appdata%\NuGet\NuGet.Config` and add the following element to **packageSources**:
 
