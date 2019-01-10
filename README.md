@@ -68,7 +68,7 @@ Visual Studio can connect directly to a SCD via SSH. To do so, click **Debug > A
 
 Debugging from Visual Studio Code depends on vsdbg on the target machine and requires some configuration in VSCode. [See this walkthrough for details](https://github.com/OmniSharp/omnisharp-vscode/wiki/Remote-Debugging-On-Linux-Arm).
 
-## System.Devices.Gpio
+## .NET Core IoT Libraries
 
 There is official support for GPIO coming in .NET Core 3.0. [It's currently in development](https://github.com/dotnet/iot).
 
