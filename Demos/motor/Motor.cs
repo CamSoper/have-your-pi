@@ -1,5 +1,7 @@
-﻿using CamTheGeek.GpioDotNet;
+﻿
 using System;
+using System.Device.Gpio;
+using System.Device.Gpio.Drivers;
 
 namespace motor
 {
@@ -9,13 +11,16 @@ namespace motor
     /// </summary>
     class Motor : IDisposable
     {
-        private GpioPin _powerPin;
-        private GpioPin _polarityPin;
-        
-        public Motor(int powerPinNumber, int polarityPinNumber)
+        private int _powerPin;
+        private int[] _polarityPins;
+        private GpioController _gpio;
+
+        public Motor(int powerPin, int[] polarityPins)
         {
-            _powerPin = new GpioPin(powerPinNumber, Direction.Out, PinValue.High);
-            _polarityPin = new GpioPin(polarityPinNumber, Direction.Out, PinValue.High);
+            _powerPin = powerPin;
+            _polarityPins = polarityPins;
+
+            _gpio = new GpioController(PinNumberingScheme.Logical, new RaspberryPi3Driver());
 
             this.Off();
             this.Forward();
@@ -23,20 +28,38 @@ namespace motor
 
         public void On()
         {
-            _powerPin.Value = PinValue.Low;
+            if (!_gpio.IsPinOpen(_powerPin))
+            {
+                _gpio.OpenPin(_powerPin, PinMode.Output);
+            }
         }
 
         public void Off()
         {
-            _powerPin.Value = PinValue.High;
+            if (_gpio.IsPinOpen(_powerPin))
+            {
+                _gpio.ClosePin(_powerPin);
+            }
         }
         public void Forward()
         {
-            _polarityPin.Value = PinValue.High;
+            foreach (int p in _polarityPins)
+            {
+                if (_gpio.IsPinOpen(p))
+                {
+                    _gpio.ClosePin(p);
+                }
+            }
         }
         public void Reverse()
         {
-            _polarityPin.Value = PinValue.Low;
+            foreach (int p in _polarityPins)
+            {
+                if (!_gpio.IsPinOpen(p))
+                {
+                    _gpio.OpenPin(p, PinMode.Output);
+                }
+            }
         }
 
 
@@ -50,8 +73,7 @@ namespace motor
                 if (disposing)
                 {
                     // TODO: dispose managed state (managed objects).
-                    _powerPin.Dispose();
-                    _polarityPin.Dispose();
+                    _gpio.Dispose();
                 }
 
                 // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
