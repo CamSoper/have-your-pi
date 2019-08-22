@@ -1,4 +1,5 @@
 ﻿using Iot.Device.Mcp3008;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Concurrent;
 using System.Device.Spi;
@@ -12,16 +13,18 @@ namespace temperature
         Mcp3008 _adc;
         ConcurrentQueue<double> _probeResistances;
         Task _adcReadTask;
+        int _offset;
 
-        public RtdProbe(SpiDevice spi)
+        public RtdProbe(SpiDevice spi, IConfiguration config)
         {
             _adc = new Mcp3008(spi);
             _probeResistances = new ConcurrentQueue<double>();
-
+            _offset = int.Parse(config["offset"]);
             _adcReadTask = ReadAdc();
+
         }
 
-        public double ProbeTemp => Math.Round(RtdTempFahrenheitFromResistance(_probeResistances.Average()), 0);
+        public double ProbeTemp => TempWithOffset();
 
         private async Task ReadAdc()
         {
@@ -53,6 +56,12 @@ namespace temperature
 
             double TempCelsius = (-A + Math.Sqrt(A * A - 4 * B * (1 - Resistance / RefResistance))) / (2 * B);
             return TempCelsius * 9 / 5 + 32;
+        }
+
+        private double TempWithOffset()
+        {
+            double temp = RtdTempFahrenheitFromResistance(_probeResistances.Average());
+            return Math.Round(temp + _offset);
         }
 
         #region IDisposable Support
