@@ -26,7 +26,7 @@ namespace display
             string padding = new string(' ', screenWidth);
             string paddedText = $"{padding}{text}{padding}";
 
-                        _lcd.Clear();
+            _lcd.Clear();
             for (int i = 0; i <= (text.Length + screenWidth); i++)
             {
                 string frame = paddedText.Substring(i, screenWidth);
