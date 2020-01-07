@@ -70,15 +70,8 @@ Debugging from Visual Studio Code depends on vsdbg on the target machine and req
 
 ## .NET Core IoT Libraries
 
-There is official support for GPIO coming in .NET Core 3.0. [It's currently in development](https://github.com/dotnet/iot).
-
-You can get started with it today by grabbing [the NuGet package hosted on the corefxlab MyGet feed](https://dotnet.myget.org/feed/dotnet-corefxlab/package/nuget/System.Devices.Gpio). To add the feed to your package sources on Windows, open `%appdata%\NuGet\NuGet.Config` and add the following element to **packageSources**:
-
-```xml
-<add key="dotnet corefxlab MyGet" value="https://dotnet.myget.org/F/dotnet-corefxlab/api/v3/index.json" />
-```
-
-On Linux and Mac developer machines, you may need to use the *source* switch with `dotnet restore` to point to the above feed. 
+[Official GPIO package](https://www.nuget.org/packages/System.Device.Gpio/)
+[Official Device Bindings package](https://www.nuget.org/packages/Iot.Device.Bindings/)
 
 ## Windows on Raspberry Pi
 
