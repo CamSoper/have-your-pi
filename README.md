@@ -70,7 +70,7 @@ Debugging from Visual Studio Code depends on vsdbg on the target machine and req
 
 ## .NET Core IoT Libraries
 
-[Official GPIO package](https://www.nuget.org/packages/System.Device.Gpio/)
+[Official GPIO package](https://www.nuget.org/packages/System.Device.Gpio/)<br />
 [Official Device Bindings package](https://www.nuget.org/packages/Iot.Device.Bindings/)
 
 ## Windows on Raspberry Pi
