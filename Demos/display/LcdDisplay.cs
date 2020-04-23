@@ -1,6 +1,7 @@
 ﻿using Iot.Device.CharacterLcd;
 using Iot.Device.Pcx857x;
 using System;
+using System.Device.Gpio;
 using System.Device.I2c;
 using System.Threading;
 using System.Threading.Tasks;
@@ -13,12 +14,17 @@ namespace display
         Pcf8574 _ioExpander;
         Lcd1602 _lcd;
 
-        public LcdDisplay(I2cDevice i2c)
-        {
-            _i2c = i2c;
-            _ioExpander = new Pcf8574(_i2c);
-            _lcd = new Lcd1602(registerSelectPin: 0, enablePin: 2, dataPins: new int[] { 4, 5, 6, 7 }, backlightPin: 3, readWritePin: 1, controller: _ioExpander);
-        }
+public LcdDisplay(I2cDevice i2c)
+{
+    _i2c = i2c;
+    _ioExpander = new Pcf8574(_i2c);
+    _lcd = new Lcd1602(registerSelectPin: 0, 
+                        enablePin: 2, 
+                        dataPins: new int[] { 4, 5, 6, 7 }, 
+                        backlightPin: 3, 
+                        readWritePin: 1, 
+                        controller: new GpioController(PinNumberingScheme.Logical, _ioExpander));
+}
 
         public async Task DisplayText(string text)
         {
